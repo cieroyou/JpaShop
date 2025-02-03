@@ -29,4 +29,24 @@ public class OrderItem {
 
     private int count; // 주문 수량
 
+    // 생성 메서드
+    // 상품 주문시 해당상품의 재고 수량을 줄이고 주문상품을 생성
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.item = item;
+        orderItem.orderPrice = orderPrice;
+        orderItem.count = count;
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
+    // 재고수량 원복
+    public void cancel() {
+        getItem().addStock(count);
+    }
+
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
+    }
 }
