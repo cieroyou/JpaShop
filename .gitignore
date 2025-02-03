@@ -38,3 +38,4 @@ out/
 
 ## h2 database
 h2data.mv.db
+h2data.trace.db
