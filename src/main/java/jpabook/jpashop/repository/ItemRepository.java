@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional(readOnly = true)
 @Repository
 @RequiredArgsConstructor
 public class ItemRepository {
@@ -16,7 +15,6 @@ public class ItemRepository {
     private final EntityManager em;
 
     // Create, Update 수행
-    @Transactional
     public void save(Item item) {
         if (item.getId() == null) {
             em.persist(item);
